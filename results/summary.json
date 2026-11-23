@@ -1,0 +1,54 @@
+{
+  "retrieval": {
+    "dense": {
+      "config": "dense",
+      "hit@5": 0.8666666666666667,
+      "mrr": 0.8
+    },
+    "hybrid": {
+      "config": "hybrid",
+      "hit@5": 0.8666666666666667,
+      "mrr": 0.6611111111111111
+    },
+    "dense+translate": {
+      "config": "dense+translate",
+      "hit@5": 0.9333333333333333,
+      "mrr": 0.8133333333333334
+    },
+    "hybrid+translate": {
+      "config": "hybrid+translate",
+      "hit@5": 1,
+      "mrr": 0.8555555555555555
+    }
+  },
+  "ragas": {
+    "dense": {
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.909,
+      "llm_context_precision_with_reference": 0.912,
+      "context_recall": 0.933,
+      "latency_ms_mean_per_step": {
+        "rag.retrieve": 39.0,
+        "rag.generate": 2945.2,
+        "rag.request": 2984.5
+      }
+    }
+  },
+  "out_of_scope": [
+    {
+      "question": "Quelle est la durée légale du congé de maternité au Maroc selon le Code du travail ?",
+      "answer": "Je ne trouve pas cette information dans le cours.",
+      "refused": true
+    },
+    {
+      "question": "Combien de paramètres possède exactement le modèle Gemini 2.5 Pro ?",
+      "answer": "Je ne trouve pas cette information dans le cours.",
+      "refused": true
+    },
+    {
+      "question": "Comment configurer un cluster Kubernetes pour servir un LLM avec vLLM ?",
+      "answer": "Je ne trouve pas cette information dans le cours.",
+      "refused": true
+    }
+  ]
+}

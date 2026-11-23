@@ -1,0 +1,240 @@
+{
+  "config": "dense",
+  "hit@5": 0.8666666666666667,
+  "mrr": 0.8,
+  "details": [
+    {
+      "id": 1,
+      "query": "Comment fonctionne l'algorithme de tokenisation BPE ?",
+      "retrieved_pages": [
+        7,
+        6,
+        10,
+        9,
+        138
+      ],
+      "reference": [
+        6,
+        7
+      ],
+      "rank": 1
+    },
+    {
+      "id": 2,
+      "query": "Quelles sont les limites de l'encodage one-hot ?",
+      "retrieved_pages": [
+        17,
+        16,
+        15,
+        154,
+        14
+      ],
+      "reference": [
+        16
+      ],
+      "rank": 2
+    },
+    {
+      "id": 3,
+      "query": "Comment mesure-t-on la similarité entre deux embeddings ?",
+      "retrieved_pages": [
+        238,
+        28,
+        26,
+        22,
+        153
+      ],
+      "reference": [
+        29
+      ],
+      "rank": null
+    },
+    {
+      "id": 4,
+      "query": "Pourquoi les embeddings statiques posent-ils problème pour un mot comme « bank » ?",
+      "retrieved_pages": [
+        35,
+        42,
+        33,
+        65,
+        212
+      ],
+      "reference": [
+        35,
+        36
+      ],
+      "rank": 1
+    },
+    {
+      "id": 5,
+      "query": "Pourquoi divise-t-on les scores d'attention par la racine carrée de d_k ?",
+      "retrieved_pages": [
+        55,
+        54,
+        105,
+        101,
+        98
+      ],
+      "reference": [
+        54,
+        55
+      ],
+      "rank": 1
+    },
+    {
+      "id": 6,
+      "query": "Quel est le rôle du softmax dans le mécanisme d'attention ?",
+      "retrieved_pages": [
+        57,
+        151,
+        59,
+        118,
+        101
+      ],
+      "reference": [
+        56,
+        57
+      ],
+      "rank": 1
+    },
+    {
+      "id": 7,
+      "query": "Donne la formule de l'encodage positionnel sinusoïdal.",
+      "retrieved_pages": [
+        77,
+        77,
+        78,
+        85,
+        86
+      ],
+      "reference": [
+        77
+      ],
+      "rank": 1
+    },
+    {
+      "id": 8,
+      "query": "Quelle est l'idée principale de RoPE ?",
+      "retrieved_pages": [
+        83,
+        81,
+        82,
+        87,
+        80
+      ],
+      "reference": [
+        81,
+        82
+      ],
+      "rank": 2
+    },
+    {
+      "id": 9,
+      "query": "Comment fonctionne le masque causal dans l'attention ?",
+      "retrieved_pages": [
+        97,
+        70,
+        140,
+        140,
+        91
+      ],
+      "reference": [
+        94,
+        95
+      ],
+      "rank": null
+    },
+    {
+      "id": 10,
+      "query": "À quoi servent les connexions résiduelles dans un Transformer ?",
+      "retrieved_pages": [
+        128,
+        119,
+        127,
+        226,
+        2
+      ],
+      "reference": [
+        127,
+        128
+      ],
+      "rank": 1
+    },
+    {
+      "id": 11,
+      "query": "Quelle est la différence entre LayerNorm et RMSNorm ?",
+      "retrieved_pages": [
+        148,
+        147,
+        139,
+        130,
+        131
+      ],
+      "reference": [
+        148
+      ],
+      "rank": 1
+    },
+    {
+      "id": 12,
+      "query": "Quelle est la différence entre top-k et top-p lors de l'échantillonnage ?",
+      "retrieved_pages": [
+        154,
+        154,
+        175,
+        53,
+        154
+      ],
+      "reference": [
+        154,
+        175
+      ],
+      "rank": 1
+    },
+    {
+      "id": 13,
+      "query": "Pourquoi un LLM peut-il donner des réponses différentes même avec une température de 0 ?",
+      "retrieved_pages": [
+        177,
+        154,
+        240,
+        190,
+        191
+      ],
+      "reference": [
+        177
+      ],
+      "rank": 1
+    },
+    {
+      "id": 14,
+      "query": "Qu'est-ce que le prompt caching et comment en tirer parti ?",
+      "retrieved_pages": [
+        219,
+        224,
+        222,
+        247,
+        211
+      ],
+      "reference": [
+        219
+      ],
+      "rank": 1
+    },
+    {
+      "id": 15,
+      "query": "Qu'est-ce que la métrique de fidélité (faithfulness) ?",
+      "retrieved_pages": [
+        239,
+        250,
+        239,
+        228,
+        234
+      ],
+      "reference": [
+        239
+      ],
+      "rank": 1
+    }
+  ]
+}

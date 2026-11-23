@@ -1,0 +1,99 @@
+{
+  "answerable": [
+    {
+      "id": 1,
+      "question": "Comment fonctionne l'algorithme de tokenisation BPE ?",
+      "reference": "BPE (Byte Pair Encoding) commence par découper chaque mot en caractères (avec un marqueur de fin de mot), compte toutes les paires de caractères adjacentes du corpus, fusionne la paire la plus fréquente en un nouveau token et répète jusqu'à atteindre la taille de vocabulaire cible V. Par exemple « unbelievable » devient [\"un\", \"believ\", \"able\"]. Il est utilisé par GPT-2, GPT-4 et LLaMA.",
+      "reference_pages": [6, 7]
+    },
+    {
+      "id": 2,
+      "question": "Quelles sont les limites de l'encodage one-hot ?",
+      "reference": "L'encodage one-hot a une dimensionnalité gigantesque (une dimension par mot du vocabulaire, 50 000+), produit des vecteurs creux (un seul 1, le reste à 0) très inefficaces, et ne porte aucune notion de sens : « cat » est à la même distance de « dog » que de « car ».",
+      "reference_pages": [16]
+    },
+    {
+      "id": 3,
+      "question": "Comment mesure-t-on la similarité entre deux embeddings ?",
+      "reference": "On utilise la similarité cosinus, qui mesure l'angle entre deux vecteurs : cos(A,B) = A·B / (‖A‖×‖B‖). Une valeur proche de +1 indique des tokens très proches (cat/dog), proche de 0 des tokens sans rapport (cat/car), et −1 des directions opposées ; les antonymes comme hot/cold ne sont pas forcément à −1 car ils apparaissent dans des contextes similaires.",
+      "reference_pages": [29]
+    },
+    {
+      "id": 4,
+      "question": "Pourquoi les embeddings statiques posent-ils problème pour un mot comme « bank » ?",
+      "reference": "Un embedding statique est indépendant du contexte : le même ID de token renvoie toujours le même vecteur. « bank » a donc le même vecteur dans « She works at the bank » (finance) et « the bank of the river » (rive) : c'est le problème de la polysémie, résolu par les embeddings contextuels via la self-attention.",
+      "reference_pages": [35, 36]
+    },
+    {
+      "id": 5,
+      "question": "Pourquoi divise-t-on les scores d'attention par la racine carrée de d_k ?",
+      "reference": "Si les composantes de Q et K ont une variance de 1, le produit scalaire Q·K a une variance d_k. Diviser par √d_k ramène la variance à 1 quelle que soit la dimension, ce qui stabilise les scores et évite la saturation du softmax.",
+      "reference_pages": [54, 55]
+    },
+    {
+      "id": 6,
+      "question": "Quel est le rôle du softmax dans le mécanisme d'attention ?",
+      "reference": "Le softmax transforme la matrice des scores mis à l'échelle (n×n, valeurs réelles arbitraires) en poids d'attention, ligne par ligne : chaque ligne devient une distribution de probabilité positive qui somme à 1, A[i,j] étant le poids que le token i accorde au token j. Il amplifie aussi les écarts : le score le plus élevé reçoit le poids le plus grand.",
+      "reference_pages": [56, 57]
+    },
+    {
+      "id": 7,
+      "question": "Donne la formule de l'encodage positionnel sinusoïdal.",
+      "reference": "Pour une position p et un indice de paire i (de 0 à d_model/2 − 1) : PE(p, 2i) = sin(p·ω_i) et PE(p, 2i+1) = cos(p·ω_i), avec ω_i = 10000^(−2i/d_model). Les paires à petit i varient vite, celles à grand i varient lentement.",
+      "reference_pages": [77]
+    },
+    {
+      "id": 8,
+      "question": "Quelle est l'idée principale de RoPE ?",
+      "reference": "RoPE (Rotary Position Embeddings) ne rajoute pas de vecteur de position : il fait tourner les vecteurs query et key projetés d'un angle proportionnel à leur position (V n'est pas tourné). Le produit scalaire entre query et key tournés ne dépend alors que du décalage relatif (n − m) entre les positions.",
+      "reference_pages": [81, 82]
+    },
+    {
+      "id": 9,
+      "question": "Comment fonctionne le masque causal dans l'attention ?",
+      "reference": "Avant le softmax, on ajoute à la matrice des scores un masque M avec M_ij = 0 si j ≤ i (autorisé) et −∞ si j > i (bloqué). Après le softmax, les positions futures reçoivent un poids nul : chaque token ne voit que lui-même et les tokens passés (région triangulaire inférieure), ce qui empêche la fuite d'information du futur pendant l'entraînement.",
+      "reference_pages": [94, 95]
+    },
+    {
+      "id": 10,
+      "question": "À quoi servent les connexions résiduelles dans un Transformer ?",
+      "reference": "Chaque sous-couche est enveloppée dans un bloc résiduel y = x + F(x) : l'entrée est transmise inchangée et la sous-couche n'apprend que la mise à jour résiduelle F(x). Le jacobien ∂y/∂x = I + ∂F/∂x fournit un chemin direct pour le gradient, ce qui réduit le risque de disparition du gradient dans les réseaux profonds.",
+      "reference_pages": [127, 128]
+    },
+    {
+      "id": 11,
+      "question": "Quelle est la différence entre LayerNorm et RMSNorm ?",
+      "reference": "LayerNorm (Transformer original, GPT-2) calcule la moyenne et la variance sur les d_model features de chaque token, centre et réduit, puis applique γ et β appris. RMSNorm (LLaMA, Mistral, Qwen) supprime le centrage par la moyenne et divise par la racine de la moyenne des carrés ; il n'a qu'un paramètre d'échelle γ, sans β. C'est un calcul plus simple.",
+      "reference_pages": [148]
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la différence entre top-k et top-p lors de l'échantillonnage ?",
+      "reference": "Top-k garde un nombre fixe k de tokens les plus probables puis renormalise, quelle que soit la forme de la distribution. Top-p (nucleus) garde le plus petit ensemble de tokens dont la probabilité cumulée atteint p : le nombre de candidats s'adapte (peu quand le modèle est confiant, plus quand la distribution est plate).",
+      "reference_pages": [154, 175]
+    },
+    {
+      "id": 13,
+      "question": "Pourquoi un LLM peut-il donner des réponses différentes même avec une température de 0 ?",
+      "reference": "La taille du batch côté serveur change l'ordre des additions en virgule flottante, ce qui crée de minuscules différences numériques. Quand deux tokens sont presque à égalité, cela suffit à inverser le choix et toute la suite diverge. Il ne faut donc jamais évaluer un LLM par correspondance exacte du texte, mais sur plusieurs exécutions.",
+      "reference_pages": [177]
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce que le prompt caching et comment en tirer parti ?",
+      "reference": "Le prompt caching permet au serveur de réutiliser son travail (le cache KV) sur un début de prompt identique. Il faut placer la partie stable (system prompt, exemples) en premier et la partie variable en dernier ; un seul caractère changé au début casse le cache. Il réduit le coût et la latence, pas la qualité.",
+      "reference_pages": [219]
+    },
+    {
+      "id": 15,
+      "question": "Qu'est-ce que la métrique de fidélité (faithfulness) ?",
+      "reference": "La fidélité découpe la réponse en affirmations unitaires et vérifie chacune par rapport à la source fournie dans le prompt, sans réponse de référence. Score = affirmations supportées / toutes les affirmations (ex. 3/4 = 75 %). Le découpage et la vérification sont faits par un LLM, donc les scores peuvent varier, et fidèle ne veut pas dire complet.",
+      "reference_pages": [239]
+    }
+  ],
+  "out_of_scope": [
+    {"id": "oos1", "question": "Quelle est la durée légale du congé de maternité au Maroc selon le Code du travail ?"},
+    {"id": "oos2", "question": "Combien de paramètres possède exactement le modèle Gemini 2.5 Pro ?"},
+    {"id": "oos3", "question": "Comment configurer un cluster Kubernetes pour servir un LLM avec vLLM ?"}
+  ]
+}
