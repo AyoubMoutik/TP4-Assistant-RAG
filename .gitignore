@@ -6,3 +6,5 @@ results/*.log
 results/.ragas_cache/
 Course/*
 !Course/course_merged.pdf
+results/compte_rendu.html
+.vscode/
