@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+index/
+results/*.log
+results/.ragas_cache/
+Course/*
+!Course/course_merged.pdf
